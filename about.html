@@ -19,7 +19,7 @@
   <!-- Header -->
   <header class="main-header">
     <a href="index.html" class="logo-link">
-        <div class="logo">SkinLesionAI</div>
+      <div class="logo">SkinLesionAI</div>
     </a>
     <nav class="nav-links">
       <a href="login.html">Login</a>
@@ -31,17 +31,16 @@
     <h2>✨ About <span>SkinLesionAI</span></h2>
     
     <div class="about-card">
-       <p>
-         SkinLesionAI is an AI-powered platform for skin lesion classification. Our models are trained on high-quality datasets to accurately identify various types of skin conditions.
-  </p>
+      <p>
+        SkinLesionAI is an AI-powered platform for skin lesion classification. 
+        Our models are trained on high-quality datasets to accurately identify various types of skin conditions.
+      </p>
 
-  <h3>Datasets</h3>
-  <ul>
-    <li><strong>HAM10000:</strong> 7 skin lesion classes including Actinic Keratoses, Basal Cell Carcinoma, Melanoma, and more.</li>
-    <li><strong>Massive Clinical Dataset:</strong> 10 classes including malignant lesions, benign tumors, vascular tumors, acne, eczema, psoriasis, and contact dermatitis.</li>
-  </ul>
-
-
+      <h3>Datasets</h3>
+      <ul>
+        <li><strong>HAM10000:</strong> 7 skin lesion classes including Actinic Keratoses, Basal Cell Carcinoma, Melanoma, and more.</li>
+        <li><strong>Massive Clinical Dataset:</strong> 10 classes including malignant lesions, benign tumors, vascular tumors, acne, eczema, psoriasis, and contact dermatitis.</li>
+      </ul>
     </div>
 
     <div class="about-info">
@@ -56,14 +55,36 @@
       </div>
 
       <div class="info-item">
-       <h3>📂 Acknowledgments</h3>
-       <p>
-         This project was made possible thanks to the contributors of publicly available dermatology datasets, including <strong>HAM10000</strong> and <strong>ISIC 2019</strong>. 
-         We are grateful to the open-source community for providing tools, code, and resources that supported model development, training, and deployment. 
-         Special thanks to mentors and researchers whose guidance inspired and strengthened this work.
-       </p>
-     </div>
+        <h3>📂 Acknowledgments</h3>
+        <p>
+          This project was made possible thanks to the contributors of publicly available dermatology datasets, 
+          including <strong>HAM10000</strong> and <strong>Massive skin disease balanced dataset</strong>. 
+          We are grateful to the open-source community for providing tools, code, and resources that supported 
+          model development, training, and deployment. Special thanks to mentors and researchers whose guidance 
+          inspired and strengthened this work.
+        </p>
+      </div>
 
+      <div class="info-item">
+        <h3>🤖 Model Overview</h3>
+        <p>
+          <strong>HAM10000 (EfficientNet):</strong> predicts 7 classes – Actinic Keratoses (akiec), Basal Cell Carcinoma (bcc), 
+          Benign Keratosis-like Lesions (bkl), Dermatofibroma (df), Melanoma (mel), Melanocytic Nevi (nv), and Vascular Lesions (vasc) 
+          using a 5-fold ensemble for improved accuracy.
+        </p>
+        <p>
+          <strong>HAM10000 (ConvNeXt):</strong> predicts the same 7 HAM10000 classes.
+        </p>
+        <p>
+          <strong>Massive Skin Disease Dataset (ConvNeXt):</strong> predicts 10 clinical classes – Actinic Keratosis & other malignant lesions, 
+          Malignant, Melanoma Skin Cancer, Nevi & Moles, Seborrheic Keratoses & other benign tumors, Vascular Tumors, 
+          Warts/Molluscum/Other viral infections, Acne & Rosacea, Eczema, Psoriasis/Lichen Planus/Related Diseases, 
+          Poison Ivy/Other Contact Dermatitis.
+        </p>
+        <p>
+          <em>Grad-CAM visualizations</em> are used to highlight regions influencing predictions, helping to make AI decisions more interpretable.
+        </p>
+      </div>
 
       <div class="info-item disclaimer">
         <h3>⚠️ Disclaimer</h3>
