@@ -4,114 +4,85 @@ document.addEventListener("DOMContentLoaded", () => {
   const preview = document.getElementById("preview");
   const classifyBtn = document.getElementById("classify-btn");
   const modelSelect = document.getElementById("model-select");
+  const resultBox = document.getElementById("result-box");
 
-  // Drag & Drop
+  // 🔑 Detect environment (local vs Hugging Face)
+  const API_BASE = window.location.hostname.includes("hf.space")
+    ? `${window.location.origin}/predict` // deployed on Hugging Face
+    : "http://127.0.0.1:8000/predict";    // local dev
+
+  // File drop
   dropZone.addEventListener("click", () => fileInput.click());
   dropZone.addEventListener("dragover", (e) => {
     e.preventDefault();
-    dropZone.classList.add("drag-over");
+    dropZone.classList.add("dragging");
   });
-  dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
+  dropZone.addEventListener("dragleave", () => {
+    dropZone.classList.remove("dragging");
+  });
   dropZone.addEventListener("drop", (e) => {
     e.preventDefault();
-    dropZone.classList.remove("drag-over");
-    if (e.dataTransfer.files.length) {
-      fileInput.files = e.dataTransfer.files;
-      handleImage(fileInput.files[0]);
+    dropZone.classList.remove("dragging");
+    fileInput.files = e.dataTransfer.files;
+    previewFile(fileInput.files[0]);
+  });
+
+  fileInput.addEventListener("change", () => {
+    if (fileInput.files.length > 0) {
+      previewFile(fileInput.files[0]);
     }
   });
 
-  // File input
-  fileInput.addEventListener("change", (e) => {
-    if (e.target.files.length) handleImage(e.target.files[0]);
-  });
-
-  function handleImage(file) {
-    if (!file.type.startsWith("image/")) {
-      alert("Please upload an image file.");
-      return;
-    }
+  function previewFile(file) {
     const reader = new FileReader();
-    reader.onload = (e) => {
-      preview.src = e.target.result;
+    reader.onload = () => {
+      preview.src = reader.result;
       preview.style.display = "block";
-
-      // Reset result
-      document.getElementById("result-section").style.display = "none";
-      document.getElementById("predicted-class").textContent = "-";
-      document.getElementById("confidence-score").textContent = "-";
-      document.getElementById("prediction-time").textContent = "-";
-      document.getElementById("heatmap").src = "";
     };
     reader.readAsDataURL(file);
   }
 
-  classifyBtn.addEventListener("click", () => {
-    const file = fileInput.files[0];
-    const modelChoice = modelSelect.value;
-
-    if (!file) {
-      alert("Please upload an image.");
-      return;
-    }
-    if (!modelChoice) {
-      alert("Please select a model.");
+  classifyBtn.addEventListener("click", async () => {
+    if (fileInput.files.length === 0) {
+      alert("Please upload an image first.");
       return;
     }
 
     const formData = new FormData();
-    formData.append("file", file);
-    formData.append("model_choice", modelChoice);
+    formData.append("file", fileInput.files[0]);
+    formData.append("model_choice", modelSelect.value);
 
-    fetch("/predict", { method: "POST", body: formData })  // ✅ relative path
-      .then(res => {
-        if (!res.ok) throw new Error("Server error: " + res.status);
-        return res.json();
-      })
-      .then(data => {
-        // Show results
-        document.getElementById("result-section").style.display = "block";
-        document.getElementById("predicted-class").textContent = data.predicted_class;
-        document.getElementById("confidence-score").textContent = data.confidence_score + "%";
-        document.getElementById("prediction-time").textContent = data.prediction_time + " s";
+    try {
+      classifyBtn.disabled = true;
+      classifyBtn.textContent = "Predicting...";
 
-        // Labels as short indices (1, 2, 3…) but tooltip shows full class
-        const shortLabels = data.class_names.map((_, idx) => (idx + 1).toString());
-
-        const ctx = document.getElementById("probs-chart").getContext("2d");
-        if (window.probChart) window.probChart.destroy();
-
-        window.probChart = new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: shortLabels,
-            datasets: [{
-              label: "Probability (%)",
-              data: data.class_probs.map(p => (p * 100).toFixed(2)),
-              backgroundColor: "rgba(33, 22, 192, 0.6)"
-            }]
-          },
-          options: {
-            scales: { y: { beginAtZero: true, max: 100 } },
-            plugins: {
-              tooltip: {
-                callbacks: {
-                  title: (items) => data.class_names[items[0].dataIndex],
-                  label: (context) => context.raw + " %"
-                }
-              },
-              legend: { display: false }
-            }
-          }
-        });
-
-        if (data.heatmap) {
-          document.getElementById("heatmap").src = data.heatmap;
-        }
-      })
-      .catch(err => {
-        console.error("Fetch error:", err);
-        alert("Prediction failed: " + err.message);
+      const response = await fetch(API_BASE, {
+        method: "POST",
+        body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      displayResult(data);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Prediction failed. Check console for details.");
+    } finally {
+      classifyBtn.disabled = false;
+      classifyBtn.textContent = "Classify";
+    }
   });
+
+  function displayResult(data) {
+    resultBox.innerHTML = `
+      <h3>Prediction Result</h3>
+      <p><strong>Class:</strong> ${data.predicted_class}</p>
+      <p><strong>Confidence:</strong> ${data.confidence_score}%</p>
+      <p><strong>Time:</strong> ${data.prediction_time}s</p>
+      ${data.heatmap ? `<img src="data:image/png;base64,${data.heatmap}" alt="Heatmap" style="max-width:100%"/>` : ""}
+    `;
+  }
 });
