@@ -86,11 +86,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }]
           },
           options: {
-            scales: { y: { beginAtZero: true, max: 100 } },
-            plugins: {
-              tooltip: { callbacks: { label: (ctx) => ctx.raw + " %" } },
-              legend: { display: false }
-            }
+    scales: {
+      y: { beginAtZero: true, max: 100 },
+      x: { ticks: { display: false } } // <-- hide x-axis labels
+    },
+    plugins: {
+      tooltip: { callbacks: { label: (ctx) => ctx.raw + " %" } },
+      legend: { display: false }
+    }
           }
         });
       })
