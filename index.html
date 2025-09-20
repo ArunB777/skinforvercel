@@ -6,10 +6,10 @@
   <title>SkinIllPill | Dermatology Classification</title>
 
   <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
-  <link rel="stylesheet" href="/static/styles.css"> <!-- Match case exactly -->
-  <script src="/static/main.js"></script> <!-- Match case exactly -->
+  <!-- Static CSS -->
+  <link rel="stylesheet" href="/static/styles.css">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,12 +18,12 @@
 
   <!-- Header Section -->
   <header class="main-header">
-    <a href="{{ url_for('index') }}" class="logo-link">
+    <a href="index.html" class="logo-link">
       <div class="logo">SkinLesionAI</div>
     </a>
     <nav class="nav-links">
-      <a href="{{ url_for('about') }}">About</a>
-      <a href="{{ url_for('login') }}">Login</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
     </nav>
   </header>
 
@@ -75,7 +75,8 @@
     </small>
   </section>
 
-  
+  <!-- Static JS -->
+  <script src="/static/main.js" defer></script>
 
   <!-- Footer -->
   <footer class="footer">
