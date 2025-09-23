@@ -21,11 +21,11 @@ html, body {
   font-size: clamp(50px, 8vw, 60px);
   font-weight: bold;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(90deg, #f2c9a0, #d9a066, #b97a57, #8d5524);
+  background: linear-gradient(270deg,#da9665, #99ecc3, #4dc5bb, #8981d8);
   background-size: 600% 600%; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientMove 6s ease infinite;
+  animation: gradientMove 9s ease infinite;
 }
 
 @keyframes gradientMove {
