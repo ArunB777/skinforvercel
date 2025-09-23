@@ -48,7 +48,7 @@ html, body {
 
 /* Dropdown styling */
 #model-select {
-  padding: 0.5rem;
+  padding: 1rem;
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid #ccc;
