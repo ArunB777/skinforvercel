@@ -54,6 +54,7 @@ html, body {
   border: 1px solid #ccc;
   margin-right: 1rem;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 #model-select:focus {
