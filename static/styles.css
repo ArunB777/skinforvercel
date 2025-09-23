@@ -21,7 +21,7 @@ html, body {
   font-size: clamp(50px, 8vw, 60px);
   font-weight: bold;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(270deg, #fce8d8, #f2c9a0, #d9a066, #b97a57, #8d5524);
+  background: linear-gradient(90deg, #f2c9a0, #d9a066, #b97a57, #8d5524);
   background-size: 600% 600%; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
