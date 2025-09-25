@@ -311,8 +311,9 @@ header nav {
 /* Style the dropdown */
 #model-select {
   width: 500px;           /* desired width */
-  padding: 0.8rem 1rem;   /* adjust as needed */
+  padding: 0.8rem 1rem;/* adjust as needed */
   font-size: 1rem;
+  display: flex;
   border-radius: 10px;
   border: 1px solid #888;
   background-color: #f8f8f8;
