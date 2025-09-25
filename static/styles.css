@@ -68,10 +68,26 @@ html, body {
 
 .upload-box {
   border: 2px dashed #787e8b;
-  padding: 6rem;
+  height: 400px;             /* make the box tall */
+  width: 100%;
+  max-width: 600px;          /* optional max width */
+  display: flex;
+  align-items: center;       /* center content vertically */
+  justify-content: center;   /* center content horizontally */
   text-align: center;
   cursor: pointer;
   transition: background 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;          /* prevent image overflow */
+  background-color: #fafafa; 
+  margin: 0 auto;            /* center box horizontally */
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;       /* scale image to fit box without stretching */
+  display: block;
   border-radius: 10px;
 }
 
