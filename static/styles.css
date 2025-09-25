@@ -67,23 +67,10 @@ html, body {
 
 .upload-box {
   border: 2px dashed #787e8b;
+  padding: 6rem;
   text-align: center;
   cursor: pointer;
   transition: background 0.3s ease;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 500px;
-  height: 400px; /* fixed height for the box */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0; /* remove padding */
-}
-
-.upload-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* fill box perfectly */
   border-radius: 10px;
 }
 
