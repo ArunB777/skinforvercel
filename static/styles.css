@@ -48,11 +48,13 @@ html, body {
 
 /* Dropdown styling */
 #model-select {
+  width: 300px;
   padding: 1rem;
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-right: 1rem;
+  margin-top: 20px;
   cursor: pointer;
   border-radius: 10px;
 }
