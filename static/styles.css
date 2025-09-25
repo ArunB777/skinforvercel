@@ -310,33 +310,39 @@ header nav {
 
 /* Style the dropdown */
 #model-select {
-  max-width: 500px;           /* desired width */
-  padding: 0.8rem 1rem;/* adjust as needed */
+  width: 100%;                /* fill container width */
+  max-width: 500px;           /* maximum width on large screens */
+  padding: 0.8rem 1rem;       /* vertical + horizontal padding */
   font-size: 1rem;
-  display: flex;
   border-radius: 10px;
   border: 1px solid #888;
   background-color: #f8f8f8;
   color: #222;
   cursor: pointer;
   display: block;
-  margin: 20px auto;      /* centers it horizontally */
+  margin: 20px auto;          /* center horizontally */
   transition: all 0.2s ease-in-out;
 }
 
-
-/* On hover */
 #model-select:hover {
   border-color: #4CAF50;
   background-color: #f1fff1;
 }
 
-/* On focus */
 #model-select:focus {
   outline: none;
   border-color: #2196F3;
   box-shadow: 0 0 5px rgba(33, 150, 243, 0.6);
 }
+
+/* Optional: adjust font size for smaller screens */
+@media (max-width: 480px) {
+  #model-select {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+}
+
 
 /* About Section */
 .about-section {
