@@ -70,7 +70,7 @@ html, body {
 
 .upload-box {
   border: 2px dashed #787e8b;
-  padding: 6rem;
+  padding: 2rem;
   text-align: center;
   cursor: pointer;
   transition: background 0.3s ease;
