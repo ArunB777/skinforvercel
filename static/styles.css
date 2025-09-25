@@ -66,20 +66,22 @@ html, body {
 }
 
 .upload-box {
-  width: 100%;            /* fill container width */
-  max-width: 500px;       /* optional max width */
-  padding: 2rem;          /* inner spacing */
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;           /* smaller padding */
   border: 2px dashed #787e8b;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
   transition: background 0.3s ease;
-  overflow: hidden;       /* ensures image doesn't overflow the box */
-  display: flex;          /* center image vertically and horizontally */
+  position: relative;      /* needed to hide text over image */
+  overflow: hidden;        
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 200px;      /* optional, ensures box has some height */
+  min-height: 200px;
 }
+
 
 .upload-box.drag-over {
   background: #f0f8ff;
