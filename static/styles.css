@@ -310,7 +310,7 @@ header nav {
 
 /* Style the dropdown */
 #model-select {
-  width: 400px;           /* desired width */
+  width: 500px;           /* desired width */
   padding: 0.8rem 1rem;   /* adjust as needed */
   font-size: 1rem;
   border-radius: 10px;
