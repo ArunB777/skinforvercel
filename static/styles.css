@@ -310,18 +310,19 @@ header nav {
 
 /* Style the dropdown */
 #model-select {
-  padding: 6px 12px;
-  font-size: 15px;
-  border-radius: 8px;
+  width: 400px;           /* desired width */
+  padding: 0.8rem 1rem;   /* adjust as needed */
+  font-size: 1rem;
+  border-radius: 10px;
   border: 1px solid #888;
-  background-color: #f8f8f8;  /* dropdown bg color */
-  color: #222;               /* text color */
+  background-color: #f8f8f8;
+  color: #222;
   cursor: pointer;
+  display: block;
+  margin: 20px auto;      /* centers it horizontally */
   transition: all 0.2s ease-in-out;
-  display: block;            /* Change to block to enable margin auto */
-  width: 200px;              /* Define width for centering */
-  margin: 0 auto;            /* Center horizontally */
 }
+
 
 /* On hover */
 #model-select:hover {
