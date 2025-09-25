@@ -192,14 +192,13 @@ html, body {
   color: #999;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: color 0.4s ease, transform 0.4s ease; /* smoother, slower */
 }
 
 .footer-links a:hover {
   color: #25f3bf;
+  transform: scale(1.1);
 }
-
-
 
 /* About section */
 .about-section {
