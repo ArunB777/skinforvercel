@@ -67,12 +67,26 @@ html, body {
 
 .upload-box {
   border: 2px dashed #787e8b;
-  padding: 6rem;
+  height: 300px; /* big box without padding */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   cursor: pointer;
   transition: background 0.3s ease;
   border-radius: 10px;
+  overflow: hidden; /* prevents image from overflowing */
+  background-color: #fafafa;
 }
+
+.upload-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* ensures image fits perfectly inside */
+  border-radius: 10px;
+  display: block;
+}
+
 
 
 .upload-box.drag-over {
