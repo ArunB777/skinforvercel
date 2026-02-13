@@ -483,7 +483,7 @@ button:hover, .classify-btn {
   display: inline-block; /* needed for scale transform */
 }
 
-.nav-links:hover, .footer-links:hover {
+.nav-links a:hover, .footer-links a:hover {
   color: #25f3bf;
   transform: scale(1.1);  /* zoom effect */
 }
