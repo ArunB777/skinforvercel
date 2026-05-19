@@ -1,4 +1,4 @@
-# SkinForVercel
+# SkinILLPILL
 
 AI-powered skin lesion classification web application built using deep learning and deployed with Vercel.
 
