@@ -133,3 +133,5 @@ Arun Baigra
 
 GitHub:
 https://github.com/ArunB777
+Linkedin:
+https://www.linkedin.com/in/arun-baigra
